@@ -2,6 +2,9 @@ package com.xallarap.passportservice.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Passport class.
  * 
@@ -12,14 +15,15 @@ public class Passport {
 
 	private final String number;
 	private final Date issue;
-	
+
 	/**
 	 * Create a new passport.
 	 * 
 	 * @param number passport number
 	 * @param issue date of issue
 	 */
-	public Passport(String number, Date issue) {
+	@JsonCreator
+	public Passport(@JsonProperty("number") String number, @JsonProperty("issue") Date issue) {
 		this.number = number;
 		this.issue = issue;
 	}

@@ -6,23 +6,28 @@ Technology
 * Source code control - Local GIT repo
 * IDE - Eclipse (quicker start time than IntelliJ
 * Build process - Maven
-* Runtime process - Tomcat 7 via Maven plugin (tomcat7:run goal)
+* Runtime process - Spring boot application (runs embedded tomcat container)
 * Testing - JUnit 4 (consideration for Mockito and Powermock)
 * Framework - Spring MVC with annotations
 
 Testing
 -
-Test via simple browser and url.  Follow these steps:
+Test via simple browser and url cannot easily work for POST and DELETE operations.  
+Therefore I downloaded a simple firefox extension which allows us to define these operations from the browser.
 
-* mvn tomcat7:run or from eclipse run configuration
-* From browser
+* run application in eclipse (or package and run as jar)
+* From browser access rest client (chrome://restclient/content/restclient.html)
+* The client has some saved favourites for each operation
 
 Steps
 -
-Keep it simple to start with.  Use eclipse and maven to build and run a simple tomcat webapp presenting a helloworld jsp.  Use maven archetype to generate project in eclipse.  
+Keep it simple to start with.  
+Create a simple spring boot application
 Implement the data model as specified.  
 Create a cache object which will provide the features needed by the REST api.  
 Implement a test class for the cache.  
+Implement a rest controller.  
+Implement a spring boot application which includes configuration.  
 
 
 Data Model Notes
@@ -37,3 +42,7 @@ The passport collection could be kept as a map for removal.  Consider beyond sco
 Cache Notes
 -
 Clearly you would not keep all this data in memory (see the cache object).  
+
+Spring Boot
+-
+I decided that instead of running an embedded tomcat to give SpringBoot a try; which I haven't used before.  This turned out to be quite useful purely because it was much easier to support the webapp.  Virtually no configuration was needed which seemed pretty needless for this exercise.  Its quite a large bit of Spring so needs some more reading to find out more.

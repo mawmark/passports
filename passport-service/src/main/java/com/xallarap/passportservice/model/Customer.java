@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Customer class.
  * 
@@ -35,7 +38,10 @@ public class Customer {
 	 * @param locationOfBirth location of birth
 	 * @param gender gender
 	 */
-	public Customer(String firstName, String lastName, Date dateOfBirth, String locationOfBirth, Gender gender) {
+	@JsonCreator
+	public Customer(@JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName,
+			@JsonProperty("dateOfBirth") Date dateOfBirth, @JsonProperty("locationOfBirth") String locationOfBirth,
+			@JsonProperty("gender") Gender gender) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;

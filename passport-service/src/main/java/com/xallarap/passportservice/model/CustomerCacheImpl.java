@@ -35,4 +35,9 @@ public class CustomerCacheImpl implements CustomerCache {
 		return customers.get(id);
 	}
 
+	@Override
+	public Map<Long, Customer> getCustomers() {
+		return customers;
+	}
+
 }

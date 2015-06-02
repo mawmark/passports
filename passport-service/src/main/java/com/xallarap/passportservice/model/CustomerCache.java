@@ -1,5 +1,7 @@
 package com.xallarap.passportservice.model;
 
+import java.util.Map;
+
 /**
  * Interface used to support the REST api providing the features needed.
  * 
@@ -23,4 +25,9 @@ public interface CustomerCache {
 	 * @return customer
 	 */
 	public Customer getCustomer(long id);
+
+	/**
+	 * @return customer map
+	 */
+	public Map<Long, Customer> getCustomers();
 }
