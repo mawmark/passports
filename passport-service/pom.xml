@@ -48,7 +48,12 @@
       <version>2.3</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.3</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>passport-service</finalName>
