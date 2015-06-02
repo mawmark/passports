@@ -87,7 +87,7 @@
               <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
             </systemProperties>
             <!-- if you want to use test dependencies rather than only runtime -->
-            <useTestClasspath>false</useTestClasspath>
+            <useTestClasspath>true</useTestClasspath>
             <!-- optional if you want to add some extra directories into the classloader -->
             <additionalClasspathDirs>
               <additionalClasspathDir></additionalClasspathDir>

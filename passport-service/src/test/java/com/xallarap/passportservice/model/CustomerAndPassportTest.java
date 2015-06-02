@@ -1,6 +1,8 @@
 package com.xallarap.passportservice.model;
 
 import static com.xallarap.passportservice.model.Customer.Gender.MALE;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -12,7 +14,7 @@ import java.text.SimpleDateFormat;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CustomerCacheImplTest {
+public class CustomerAndPassportTest {
 
 	private CustomerCache cache;
 	private DateFormat formatter = new SimpleDateFormat("dd-MM-yy");
@@ -31,4 +33,21 @@ public class CustomerCacheImplTest {
 		assertThat(customer, equalTo(retrieved));
 	}
 
+	@Test
+	public void testAddAndGetPassportForCustomer() throws ParseException {
+		Customer customer = new Customer("mark", "wimpory", formatter.parse("26-10-65"), "farnborough", MALE);
+		Passport passport = new Passport("101", formatter.parse("1-1-2015"));
+		customer.addPassport(passport);
+		assertThat(customer.getPassports(), hasItem(passport));
+	}
+
+	@Test
+	public void testAddAndDeletePassportForCustomer() throws ParseException {
+		Customer customer = new Customer("mark", "wimpory", formatter.parse("26-10-65"), "farnborough", MALE);
+		Passport passport = new Passport("101", formatter.parse("1-1-2015"));
+		customer.addPassport(passport);
+		assertThat(customer.getPassports(), hasItem(passport));
+		customer.deletePassport("101");
+		assertThat(customer.getPassports(), not(hasItem(passport)));
+	}
 }
