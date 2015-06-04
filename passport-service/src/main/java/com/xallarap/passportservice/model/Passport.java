@@ -2,7 +2,14 @@ package com.xallarap.passportservice.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,10 +18,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Mark
  *
  */
+@Entity
+@Table(name = "PASSPORTS")
+@JsonIgnoreProperties({ "customer" })
 public class Passport {
 
-	private final String number;
-	private final Date issue;
+	@Id
+	@Column(name = "NUMBER")
+	private String number;
+	@Column(name = "ISSUE")
+	private Date issue;
+	@ManyToOne
+	private Customer customer;
 
 	/**
 	 * Create a new passport.
@@ -29,6 +44,12 @@ public class Passport {
 	}
 
 	/**
+	 * Empty constructor used for persistence
+	 */
+	public Passport() {
+	}
+
+	/**
 	 * @return passport number
 	 */
 	public String getNumber() {
@@ -40,6 +61,28 @@ public class Passport {
 	 */
 	public Date getIssue() {
 		return issue;
+	}
+
+	/**
+	 * @param number passport number
+	 */
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	/**
+	 * @param issue issue date
+	 */
+	public void setIssue(Date issue) {
+		this.issue = issue;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override

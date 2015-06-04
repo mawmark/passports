@@ -1,7 +1,6 @@
 package com.xallarap.passportservice.controller;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +42,11 @@ public class PassportController {
 		if (customer == null) {
 			throw new CustomerNotFoundException(customerId);
 		}
-		return customer.getPassports();
+		return customer.getPassportCollection();
 	}
 
 	@RequestMapping(value = "/customers", method = RequestMethod.GET)
-	public Map<Long, Customer> getCustomers() {
+	public Collection<Customer> getCustomers() {
 		log.info("Request for all customers");
 		return cache.getCustomers();
 	}
@@ -64,6 +63,8 @@ public class PassportController {
 		Customer customer = cache.getCustomer(customerId);
 		if (customer != null) {
 			customer.addPassport(input);
+			input.setCustomer(customer);
+			cache.flush();
 		} else {
 			throw new CustomerNotFoundException(customerId);
 		}
@@ -75,6 +76,7 @@ public class PassportController {
 		Customer customer = cache.getCustomer(customerId);
 		if (customer != null) {
 			customer.deletePassport(number);
+			cache.flush();
 		} else {
 			throw new CustomerNotFoundException(customerId);
 		}

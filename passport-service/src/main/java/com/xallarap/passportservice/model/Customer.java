@@ -2,8 +2,19 @@ package com.xallarap.passportservice.model;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MapKey;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Mark
  *
  */
+@Entity
+@Table(name = "CUSTOMER")
 public class Customer {
 
 	/** Gender */
@@ -21,13 +34,23 @@ public class Customer {
 		MALE, FEMALE;
 	}
 
-	private final String firstName;
-	private final String lastName;
-	private final Date dateOfBirth;
-	private final String locationOfBirth;
-	private final Gender gender;
-
-	private final Map<String, Passport> passports = new ConcurrentHashMap<String, Passport>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private long id;
+	@Column(name = "FIRST")
+	private String firstName;
+	@Column(name = "LAST")
+	private String lastName;
+	@Column(name = "DOB")
+	private Date dateOfBirth;
+	@Column(name = "LOB")
+	private String locationOfBirth;
+	@Column(name = "GENDER")
+	private Gender gender;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
+	@MapKey(name = "number")
+	private Map<String, Passport> passports = new HashMap<String, Passport>();
 
 	/**
 	 * Create a new customer.
@@ -50,6 +73,12 @@ public class Customer {
 	}
 
 	/**
+	 * Empty constructor used for persistence
+	 */
+	public Customer() {
+	}
+
+	/**
 	 * Add a new passport to our collection.
 	 * 
 	 * @param passport
@@ -60,6 +89,20 @@ public class Customer {
 
 	public void deletePassport(String passportNumber) {
 		passports.remove(passportNumber);
+	}
+
+	/**
+	 * @return customer id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id new id
+	 */
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
@@ -98,10 +141,53 @@ public class Customer {
 	}
 
 	/**
+	 * @param firstName first name
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @param lastName last name
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @param dateOfBirth date of birth
+	 */
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	/**
+	 * @param locationOfBirth location of birth
+	 */
+	public void setLocationOfBirth(String locationOfBirth) {
+		this.locationOfBirth = locationOfBirth;
+	}
+
+	/**
+	 * @param gender gender
+	 */
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	/**
 	 * @return this customers passports
 	 */
-	public Collection<Passport> getPassports() {
+	public Collection<Passport> getPassportCollection() {
 		return passports.values();
+	}
+
+	public Map<String, Passport> getPassports() {
+		return passports;
+	}
+
+	public void setPassports(Map<String, Passport> passports) {
+		this.passports = passports;
 	}
 
 	@Override

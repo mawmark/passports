@@ -1,5 +1,6 @@
 package com.xallarap.passportservice.model;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -24,6 +25,8 @@ public class CustomerCacheImpl implements CustomerCache {
 	public long addCustomer(Customer customer) {
 		log.info("Adding new customer: {}", customer);
 		long id = customerId.incrementAndGet();
+		// Add the id to the customer. Used by persistence in other impl
+		customer.setId(id);
 		customers.put(id, customer);
 		log.info("Customer: {} added with id: {}", customer, id);
 		return id;
@@ -36,8 +39,13 @@ public class CustomerCacheImpl implements CustomerCache {
 	}
 
 	@Override
-	public Map<Long, Customer> getCustomers() {
-		return customers;
+	public Collection<Customer> getCustomers() {
+		return customers.values();
+	}
+
+	@Override
+	public void flush() {
+		// Nothing to do here
 	}
 
 }

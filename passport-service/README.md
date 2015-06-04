@@ -9,6 +9,7 @@ Technology
 * Runtime process - Spring boot application (runs embedded tomcat container)
 * Testing - JUnit 4 (consideration for Mockito and Powermock)
 * Framework - Spring MVC with annotations
+* Database - Hibernate backed by HSQLDB
 
 Testing
 -
@@ -46,3 +47,7 @@ Clearly you would not keep all this data in memory (see the cache object).
 Spring Boot
 -
 I decided that instead of running an embedded tomcat to give SpringBoot a try; which I haven't used before.  This turned out to be quite useful purely because it was much easier to support the webapp.  Virtually no configuration was needed which seemed pretty needless for this exercise.  Its quite a large bit of Spring so needs some more reading to find out more.
+
+Hibernate
+-
+It seemed like a good time to refresh my hibernate knowledge which is very old.

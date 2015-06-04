@@ -38,7 +38,7 @@ public class CustomerAndPassportTest {
 		Customer customer = new Customer("mark", "wimpory", formatter.parse("26-10-65"), "farnborough", MALE);
 		Passport passport = new Passport("101", formatter.parse("1-1-2015"));
 		customer.addPassport(passport);
-		assertThat(customer.getPassports(), hasItem(passport));
+		assertThat(customer.getPassportCollection(), hasItem(passport));
 	}
 
 	@Test
@@ -46,8 +46,8 @@ public class CustomerAndPassportTest {
 		Customer customer = new Customer("mark", "wimpory", formatter.parse("26-10-65"), "farnborough", MALE);
 		Passport passport = new Passport("101", formatter.parse("1-1-2015"));
 		customer.addPassport(passport);
-		assertThat(customer.getPassports(), hasItem(passport));
+		assertThat(customer.getPassportCollection(), hasItem(passport));
 		customer.deletePassport("101");
-		assertThat(customer.getPassports(), not(hasItem(passport)));
+		assertThat(customer.getPassportCollection(), not(hasItem(passport)));
 	}
 }

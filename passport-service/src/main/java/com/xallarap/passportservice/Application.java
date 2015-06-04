@@ -1,5 +1,7 @@
 package com.xallarap.passportservice;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.xallarap.passportservice.model.CustomerCache;
-import com.xallarap.passportservice.model.CustomerCacheImpl;
+import com.xallarap.passportservice.model.CustomerCacheSqlImpl;
 
 /**
  * Boot application class
@@ -35,10 +37,13 @@ public class Application {
 	public CustomerCache customerCache() {
 		// Create an empty cache
 		log.info("Creating customer cache");
-		CustomerCache cache = new CustomerCacheImpl();
-		// Populate the cache
-		// TODO add some cache population
+		CustomerCache cache = new CustomerCacheSqlImpl();
 		return cache;
 	}
 
+	@Bean
+	public SessionFactory sessionFactory() {
+		log.info("Creating hibernate session factory");
+		return new org.hibernate.cfg.Configuration().configure().buildSessionFactory(new StandardServiceRegistryBuilder().build());
+	}
 }
