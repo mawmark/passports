@@ -1,7 +1,7 @@
 package com.xallarap.passportservice.model;
 
 /**
- * Simple exception class
+ * Simple exception class.
  * 
  * @author Mark
  *

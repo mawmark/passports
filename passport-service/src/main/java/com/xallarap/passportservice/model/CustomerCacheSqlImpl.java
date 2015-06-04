@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Class used to keep the collection of customers.
+ * Class used to keep the collection of customers in database using hibernate.
  * 
  * @author Mark
  *

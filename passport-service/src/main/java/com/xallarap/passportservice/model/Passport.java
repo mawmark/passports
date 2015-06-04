@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Entity
 @Table(name = "PASSPORTS")
+// Needed otherwise circular dependency madness occurs
 @JsonIgnoreProperties({ "customer" })
 public class Passport {
 
@@ -77,10 +78,16 @@ public class Passport {
 		this.issue = issue;
 	}
 
+	/**
+	 * @return customer
+	 */
 	public Customer getCustomer() {
 		return customer;
 	}
 
+	/**
+	 * @param customer customer
+	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}

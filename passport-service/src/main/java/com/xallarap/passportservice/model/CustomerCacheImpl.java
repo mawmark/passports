@@ -45,7 +45,7 @@ public class CustomerCacheImpl implements CustomerCache {
 
 	@Override
 	public void flush() {
-		// Nothing to do here
+		// Nothing to do here as in memory model
 	}
 
 }

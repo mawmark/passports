@@ -192,7 +192,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", locationOfBirth="
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", locationOfBirth="
 				+ locationOfBirth + ", gender=" + gender + ", passports=" + passports + "]";
 	}
 

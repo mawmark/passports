@@ -13,7 +13,7 @@ import com.xallarap.passportservice.model.CustomerCache;
 import com.xallarap.passportservice.model.CustomerCacheSqlImpl;
 
 /**
- * Boot application class
+ * Boot application class. Also acts as spring config as only 2 beans needed.
  * 
  * @author Mark
  *
