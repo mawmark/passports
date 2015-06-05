@@ -10,6 +10,7 @@ Technology
 * Testing - JUnit 4 (consideration for Mockito and Powermock)
 * Framework - Spring MVC with annotations
 * Database - Hibernate backed by HSQLDB
+* Front end - jQuery
 
 Testing
 -
@@ -31,6 +32,7 @@ Implement a test class for the cache.
 Implement a rest controller.  
 Implement a spring boot application which includes configuration.  
 Add database using hibernate to a new implementation of the cache.  
+Added a very simple static content type page with ajax jQuery to show customers as a table.  
 
 
 Data Model Notes
