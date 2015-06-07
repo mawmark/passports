@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body ng-app="customerApp">
+
+<div ng-controller="customersListCtrl">
+
+<table class="table table-striped">
+  <thead>
+  	<th>Id</th>
+  	<th>First Name</th>
+  	<th>Last Name</th>
+  	<th>Date Of Birth</th>
+  	<th>Location Of Birth</th>
+  	<th>Gender</th>
+  </thead>
+  <tr ng-repeat="x in names">
+    <td>{{ x.id }}</td>
+    <td>{{ x.firstName }}</td>
+    <td>{{ x.lastName }}</td>
+    <td>{{ x.dateOfBirth }}</td>
+    <td>{{ x.locationOfBirth }}</td>
+    <td>{{ x.gender }}</td>
+  </tr>
+</table>
+
+</div>
+
+<div ng-controller="formCtrl">
+
+  <form novalidate>
+    First Name:<br>
+    <input type="text" ng-model="user.firstName"><br>
+    Last Name:<br>
+    <input type="text" ng-model="user.lastName">
+    <br><br>
+    <button ng-click="reset()">RESET</button>
+    <button ng-click="save()">SAVE</button>
+  </form>
+  <p>form = {{user}}</p>
+  <p>master = {{master}}</p>
+  
+</div>
+
+<script>
+var app = angular.module('customerApp', []); 
+app.controller('customersListCtrl', function($scope, $http) {
+    $http.get("customers")
+    .success(function (response) {$scope.names = response;});
+});
+app.controller('formCtrl', function($scope, $http) {
+    $scope.master = {firstName: "John", lastName: "Doe"};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.save = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</script>
+
+</body>
+</html>
