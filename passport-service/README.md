@@ -3,7 +3,7 @@ G7 Developer Task Notes
 
 Technology
 -
-* Source code control - Local GIT repo
+* Source code control - Local GIT repo / Github
 * IDE - Eclipse (quicker start time than IntelliJ)
 * Build process - Maven
 * Runtime process - Spring boot application (runs embedded tomcat container)
@@ -18,14 +18,15 @@ Test via simple browser and url cannot easily work for POST and DELETE operation
 Therefore I downloaded a simple firefox extension which allows us to define these operations from the browser.  
 I decided against a command line client at this stage which I have used before (there are a few out there) although I would use one of these for automated testing.
 
-* run application in eclipse (or package and run as jar)
+* run the database (mvn exec:java)
+* run application in eclipse (or package and run as jar) (mvn spring-boot:run)
 * From browser access rest client (chrome://restclient/content/restclient.html)
 * The client has some saved favourites for each operation
 
 Steps
 -
 Keep it simple to start with.  
-Create a simple spring boot application
+Create a simple spring boot application 
 Implement the data model as specified.  
 Create a cache object which will provide the features needed by the REST api.  
 Implement a test class for the cache.  
