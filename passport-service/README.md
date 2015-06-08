@@ -32,7 +32,8 @@ Implement a test class for the cache.
 Implement a rest controller.  
 Implement a spring boot application which includes configuration.  
 Add database using hibernate to a new implementation of the cache.  
-Added a very simple static content type page with ajax jQuery to show customers as a table.  
+Added a very simple static content type page with ajax jQuery to show customers as a table. 
+Investigate Angularjs as a client framework 
 
 
 Data Model Notes
@@ -43,7 +44,7 @@ Consider thread safety.  For now use non thread safe collections.
 Consider exception handling.  What to do if passport added to non existent customer.  
 Consider that exposing the collection of passports on the public api is not great, perhaps pass a copied collection. 
 The passport collection could be kept as a map for removal.
-The use of Hibernate has poluted the model slightly due to the 2 way reference.  More hibernate knowledge needed.
+The use of Hibernate has polluted the model slightly due to the 2 way reference.  More hibernate knowledge needed.
 
 Cache Notes
 -
