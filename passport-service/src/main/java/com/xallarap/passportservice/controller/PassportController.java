@@ -57,7 +57,7 @@ public class PassportController {
 		return cache.addCustomer(input);
 	}
 
-	@RequestMapping(value = "/passports", method = RequestMethod.POST)
+	@RequestMapping(value = "/passports", method = RequestMethod.PUT)
 	public void addPassport(@RequestParam(value = "customerId") long customerId, @RequestBody Passport input) throws CustomerNotFoundException {
 		log.info("Call to add passport with: {} to: {}", input, customerId);
 		Customer customer = cache.getCustomer(customerId);

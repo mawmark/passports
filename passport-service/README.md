@@ -10,7 +10,7 @@ Technology
 * Testing - JUnit 4 (consideration for Mockito and Powermock)
 * Framework - Spring MVC with annotations
 * Database - Hibernate backed by HSQLDB
-* Front end - jQuery
+* Front end - jQuery & Angularjs
 
 Testing
 -

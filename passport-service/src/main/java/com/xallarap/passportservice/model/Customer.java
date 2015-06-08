@@ -84,6 +84,7 @@ public class Customer {
 	 * @param passport
 	 */
 	public void addPassport(Passport passport) {
+		// TODO - Should we check for existence?
 		passports.put(passport.getNumber(), passport);
 	}
 
